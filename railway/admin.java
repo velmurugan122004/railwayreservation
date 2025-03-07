@@ -54,7 +54,7 @@ public class admin {
 			}
 			default:
 			{
-				System.out.print("OPTION IS EXISTS");
+				System.out.print("OPTION IS EXISTS PLS CHECK");
 				System.exit(0);
 				break;
 			}
