@@ -3,21 +3,38 @@ import java.util.*;
 public class admin {
 	public static int seat;
 	public static int trainNo;
+	public static String trainName;
 	public static int racCount;
 	public static int waitingLimit;
+	
+	
+	
+	//public static Map<Integer,Integer> trainavl =new HashMap<Integer,Integer>();
 	
 	Scanner sc=new Scanner (System.in);
 	
 	public void menu() {
 	System.out.print("ENTER TRAIN NO :");
 	trainNo=sc.nextInt();
+	System.out.print("ENTER TRAIN NAME :");
+	trainName=sc.next();
 	System.out.print("ENTER SEAT AVAILABLITY :");
 	seat=sc.nextInt();
 	System.out.print("ENTER RAC LIMIT :");
 	racCount=sc.nextInt();
 	System.out.print("ENTER WAITING LIST LIMIT :");
 	waitingLimit=sc.nextInt();
+	
+	
+	//trainavl.put(trainNo, seat);
+	user.che(new train(trainNo,trainName,seat,racCount,waitingLimit));
+	//train tr=new train(trainNo,trainName,seat,racCount,waitingLimit);
 	}
+	/*public static Map<Integer,Integer> gettrainAvl()
+	{
+		return trainavl;
+	}*/
+	
 	public  void display() {
 		
 	
@@ -54,7 +71,7 @@ public class admin {
 			}
 			default:
 			{
-				System.out.print("OPTION IS EXISTS PLS CHECK");
+				System.out.print("OPTION IS EXISTS");
 				System.exit(0);
 				break;
 			}

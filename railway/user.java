@@ -3,7 +3,36 @@ import java.util.*;
 public class user {
 	Scanner s=new Scanner(System.in);
 	boolean check=false;
+	
+	static ArrayList<train> trainList =new ArrayList<train>();
+	
+	public boolean check1(int trainNo)
+	{
+		boolean ch=false;
+		/*for(Map.Entry<Integer,Integer> entry1 : entry.entrySet())
+		{
+			if(trainNo==entry1.getKey())
+			{
+				ch=true;
+			}
+		}*/
+		for(train t :trainList)
+		{
+			if(trainNo==t.getTrainNumber())
+			{
+				ch =true;
+			}
+		}
+		return ch;
+	}
+	public static void che(train t)
+	{
+		
+		trainList.add(t);
+	}
+	
 	public void menu() {
+		
 	while(!check) {
 		System.out.println("\n 1.Booking Ticket \n 2.Cancel Ticket \n 3.Check seat Availability \n 4.Check available train \n 5.Ticket Status check \n 6.Back");
 		System.out.print("ENTER YOUR OPTION :");
@@ -13,13 +42,14 @@ public class user {
 		case 1:
 		{
 			
-			System.out.println("ENTER NUMBER OF TICKET TO BOOK :");
+			System.out.print("ENTER NUMBER OF TICKET TO BOOK :");
 			int count=s.nextInt();
 			while(count>=1)
 			{
 			System.out.print("ENTER TRAIN NUMBER :");
 			int TrainNo=s.nextInt();
-			if(TrainNo==admin.trainNo) 
+			
+			if(check1(TrainNo)) 
 			{
 			    System.out.print("ENTER YOUR NAME :");
 			    String name=s.next();
@@ -29,6 +59,7 @@ public class user {
 			    char prefer=s.next().charAt(0);
 	            if(prefer=='U'|| prefer=='M'|| prefer=='L' || prefer=='u' || prefer=='l' || prefer=='m') {
 	            	char prefer1=Character.toUpperCase(prefer);
+	            	TicketBooking.train(TrainNo);
 	            	TicketBooking.bookTicket(new Passenger(name,age,prefer1));
 	            	count--;
 	            }
@@ -40,7 +71,6 @@ public class user {
 			else
 			{
 				System.out.println("Train is not available check available train then book");
-				System.out.println(admin.trainNo);
 				check=false;
 			}
 			}
@@ -61,7 +91,10 @@ public class user {
 		case 4:
 		{
 			System.out.println("Available Trains :-");
-			System.out.println(admin.trainNo);
+			for(train t:trainList)
+			{
+				System.out.println(t.toString());
+			}
 			break;
 		}
 		case 5:
@@ -84,7 +117,7 @@ public class user {
 			System.exit(0);
 			break;
 		}
-		}
+	}
 	}
 }
 

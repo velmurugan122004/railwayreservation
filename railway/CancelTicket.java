@@ -82,7 +82,7 @@ public class CancelTicket extends TicketBooking{
 			
 			p.setPreference(preferenceTracker);
 			p.setSeatNumber(canceledSeatNumber);
-			p.setTicketType("berth");
+			p.setTicketType("berth confirmed");
 			
 			if(preferenceTracker=='U')
 			{
